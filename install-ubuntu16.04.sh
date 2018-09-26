@@ -174,5 +174,25 @@ make
 sudo make install
 c_print "green" "[DONE]"
 
+
+cd $ROOT
 echo ""
-c_print "blue"
+c_print "blue" "Install p4c compiler"
+git clone --recursive https://github.com/p4lang/p4c.git
+cd p4c
+mkdir build
+cd build
+cmake ..
+make -j2
+sudo make install
+sudo ldconfig
+c_print "green" "[DONE]"
+cd $ROOT
+
+c_print "green" "EVERYTHING IS INSTALLED"
+c_print "white" "Check whether you have the following binaries:"
+c_print "bold"  "P4 compiler: " 1
+c_print "yellow" "p4c, p4c-bm2-psa, p4c-bm2-ss p4c-ebpf, p4c-graphs"
+c_print "bold"  "P4 software switch: " 1
+c_print "yellow" "simple_switch, simple_switch_grpc, simple_switch_CLI"
+echo ""
